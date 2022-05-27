@@ -6,7 +6,7 @@ import fertdt.alglearningv2.model.CuberEntity;
 import fertdt.alglearningv2.util.mapper.CuberMapper;
 import fertdt.alglearningv2.util.mapper.StatisticsMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +15,7 @@ import java.time.LocalDate;
 @Component
 @RequiredArgsConstructor
 public class CuberMapperImpl implements CuberMapper {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private final StatisticsMapper statisticsMapper;
 
