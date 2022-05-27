@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="changesets/create_cuber_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_role_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_cube_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_method_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_situation_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_algorithm_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_setting_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_statistics_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_file_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/create_wca_competition_table.xml" relativeToChangelogFile="true"/>
+
+    <include file="changesets/insert_roles.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_admin.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_cubes.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_methods.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_pll_situations.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_pll_algorithms.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/insert_default_setting_values.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="uuid_type" value="UUID" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <changeSet id="001" author="fertdt">
+        <createTable tableName="statistics">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_statistics"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_statistics_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id"/>
+            </column>
+            <column name="date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_forgot" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_repeat" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_new" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_trained" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE statistics
+                ADD CONSTRAINT uk_statistics_date_and_cuber_id UNIQUE (date, cuber_id);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001" author="fertdt">
+        <insert tableName="cuber">
+            <column name="nickname" value="fertdt"/>
+            <column name="email" value="kislovskijalexey34@gmail.com"/>
+            <column name="hashed_password" value="$2a$10$KNtctmRZTb4ZCdEeHw5J.ujV3ctUoFmLgiZXgQ8OFJ2gASMMwJqL2"/>
+        </insert>
+        <insert tableName="cuber">
+            <column name="nickname" value="unknown_user"/>
+            <column name="hashed_password" value=""/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="002" author="fertdt">
+        <insert tableName="cuber_role">
+            <column name="cuber_id" valueComputed="(select id from cuber where nickname = 'fertdt')"/>
+            <column name="role_id" valueComputed="(select id from role where name = 'ROLE_USER')"/>
+        </insert>
+        <insert tableName="cuber_role">
+            <column name="cuber_id" valueComputed="(select id from cuber where nickname = 'fertdt')"/>
+            <column name="role_id" valueComputed="(select id from role where name = 'ROLE_MODERATOR')"/>
+        </insert>
+        <insert tableName="cuber_role">
+            <column name="cuber_id" valueComputed="(select id from cuber where nickname = 'fertdt')"/>
+            <column name="role_id" valueComputed="(select id from role where name = 'ROLE_ADMIN')"/>
+        </insert>
+        <insert tableName="cuber_role">
+            <column name="cuber_id" valueComputed="(select id from cuber where nickname = 'unknown_user')"/>
+            <column name="role_id" valueComputed="(select id from role where name = 'ROLE_USER')"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

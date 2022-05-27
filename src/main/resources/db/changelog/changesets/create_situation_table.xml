@@ -1,0 +1,111 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="uuid_type" value="UUID" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <property name="date_now" value="CURRENT_DATE" dbms="postgresql"/>
+    <property name="date_type" value="DATE" dbms="postgresql"/>
+    <changeSet id="001" author="fertdt">
+        <createTable tableName="situation">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_situation"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="method_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_situation_to_method"
+                             referencedTableName="method" referencedColumnNames="id"/>
+            </column>
+            <column name="mirror_id" type="UUID">
+                <constraints nullable="true" foreignKeyName="fk_mirror"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+            <column name="reverse_id" type="UUID">
+                <constraints nullable="true" foreignKeyName="fk_reverse"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+            <column name="mirror_reverse_id" type="UUID">
+                <constraints nullable="true" foreignKeyName="fk_mirror_reverse"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+            <column name="image" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE situation
+                ADD CONSTRAINT uk_situation_name_and_method_id UNIQUE (name, method_id);
+        </sql>
+    </changeSet>
+
+    <changeSet id="002" author="fertdt">
+        <createTable tableName="cuber_learned_situation">
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_learned_situation_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="situation_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_learned_situation_to_situation"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE cuber_learned_situation
+                ADD CONSTRAINT pk_cuber_learned_situation PRIMARY KEY (cuber_id, situation_id);
+        </sql>
+    </changeSet>
+
+    <changeSet id="003" author="fertdt">
+        <createTable tableName="cuber_learning_situation">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cuber_learning_situation"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_learning_situation_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="situation_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_learning_situation_to_situation"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+            <column name="status" type="VARCHAR(255)" defaultValue="NEW">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_interval" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="next_repeat" type="${date_type}" defaultValueComputed="${date_now}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE cuber_learning_situation
+                ADD CONSTRAINT uk_cuber_learning_situation UNIQUE (cuber_id, situation_id);
+            ALTER TABLE cuber_learning_situation
+                ADD CONSTRAINT cuber_learning_situation_status_check CHECK (status in ('NEW', 'FORGOT', 'REPEAT', 'AWAIT'));
+        </sql>
+    </changeSet>
+
+    <changeSet id="004" author="fertdt">
+        <createTable tableName="cuber_training_situation">
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_training_situation_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="situation_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_training_situation_to_situation"
+                             referencedTableName="situation" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE cuber_training_situation
+                ADD CONSTRAINT pk_cuber_training_situation PRIMARY KEY (cuber_id, situation_id);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

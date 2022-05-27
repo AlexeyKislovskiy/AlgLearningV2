@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001" author="fertdt">
+        <insert tableName="method">
+            <column name="name" value="Pll"/>
+            <column name="image" value="/img/methods/pllIntoSolved.png"/>
+            <column name="description"
+                    value="До применения: собраны 2 слоя, ориентированы все элементы верхнего слоя. После применения: куб собран"/>
+            <column name="cube_id" valueComputed="(select id from cube where name = '3x3')"/>
+        </insert>
+        <insert tableName="method">
+            <column name="name" value="Oll"/>
+            <column name="image" value="/img/methods/ollIntoSolved.png"/>
+            <column name="description"
+                    value="До применения: собраны 2 слоя. После применения: ориентированы все элементы верхнего слоя"/>
+            <column name="cube_id" valueComputed="(select id from cube where name = '3x3')"/>
+        </insert>
+        <insert tableName="method">
+            <column name="name" value="Cll"/>
+            <column name="image" value="/img/methods/cllIntoSolved.png"/>
+            <column name="description"
+                    value="До применения: собран 1 слой. После применения: куб собран"/>
+            <column name="cube_id" valueComputed="(select id from cube where name = '2x2')"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

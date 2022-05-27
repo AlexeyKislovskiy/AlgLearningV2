@@ -1,0 +1,306 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001" author="fertdt">
+        <insert tableName="situation">
+            <column name="name" value="Aa"/>
+            <column name="image" value="/img/pll/Aa.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ab"/>
+            <column name="image" value="/img/pll/Ab.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="E"/>
+            <column name="image" value="/img/pll/E.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="F"/>
+            <column name="image" value="/img/pll/F.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ga"/>
+            <column name="image" value="/img/pll/Ga.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Gb"/>
+            <column name="image" value="/img/pll/Gb.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Gc"/>
+            <column name="image" value="/img/pll/Gc.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Gd"/>
+            <column name="image" value="/img/pll/Gd.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="H"/>
+            <column name="image" value="/img/pll/H.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ja"/>
+            <column name="image" value="/img/pll/Ja.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Jb"/>
+            <column name="image" value="/img/pll/Jb.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Na"/>
+            <column name="image" value="/img/pll/Na.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Nb"/>
+            <column name="image" value="/img/pll/Nb.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ra"/>
+            <column name="image" value="/img/pll/Ra.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Rb"/>
+            <column name="image" value="/img/pll/Rb.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="T"/>
+            <column name="image" value="/img/pll/T.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ua"/>
+            <column name="image" value="/img/pll/Ua.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Ub"/>
+            <column name="image" value="/img/pll/Ub.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="V"/>
+            <column name="image" value="/img/pll/V.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Y"/>
+            <column name="image" value="/img/pll/Y.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+        <insert tableName="situation">
+            <column name="name" value="Z"/>
+            <column name="image" value="/img/pll/Z.png"/>
+            <column name="method_id" valueComputed="(select id from method where name = 'Pll')"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="002" author="fertdt">
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ab' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ab' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Aa' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Aa' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Aa' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Aa' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ab' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ab' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'E' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'E' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'E' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'E' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'F' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'F' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'F' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'F' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Gc' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Gb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Gd' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ga' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Gd' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ga' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Gc' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Gb' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ga' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Gd' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Gb' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Gc' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Gb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Gc' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ga' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Gd' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'H' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'H' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'H' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'H' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Jb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ja' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Jb' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ja' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ja' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Jb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ja' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Jb' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Nb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Na' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Nb' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Na' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Na' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Nb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Na' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Nb' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Rb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ra' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Rb' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ra' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ra' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Rb' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ra' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Rb' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'T' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'T' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'T' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'T' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ub' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ub' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ua' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ua' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Ua' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Ua' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Ub' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Ub' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'V' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'V' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'V' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'V' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Y' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Y' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Y' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Y' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+        <update tableName="situation">
+            <column name="mirror_id"
+                    valueComputed="(select id from situation where name = 'Z' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="reverse_id"
+                    valueComputed="(select id from situation where name = 'Z' and method_id = (select id from method where name = 'Pll'))"/>
+            <column name="mirror_reverse_id"
+                    valueComputed="(select id from situation where name = 'Z' and method_id = (select id from method where name = 'Pll'))"/>
+            <where>name = 'Z' and method_id = (select id from method where name = 'Pll')</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

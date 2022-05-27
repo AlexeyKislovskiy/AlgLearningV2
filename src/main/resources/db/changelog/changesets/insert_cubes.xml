@@ -1,0 +1,94 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001" author="fertdt">
+        <insert tableName="cube">
+            <column name="name" value="3x3"/>
+            <column name="image" value="/img/cubeIcons/3x3.png"/>
+            <column name="description" value="Кубик 3x3x3"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name" value="2x2"/>
+            <column name="image" value="/img/cubeIcons/2x2.png"/>
+            <column name="description" value="Кубик 2x2x2"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name" value="4x4"/>
+            <column name="image" value="/img/cubeIcons/4x4.png"/>
+            <column name="description" value="Кубик 4x4x4"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name" value="5x5"/>
+            <column name="image" value="/img/cubeIcons/5x5.png"/>
+            <column name="description" value="Кубик 5x5x5"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name" value="6x6"/>
+            <column name="image" value="/img/cubeIcons/6x6.png"/>
+            <column name="description" value="Кубик 6x6x6"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name" value="7x7"/>
+            <column name="image" value="/img/cubeIcons/7x7.png"/>
+            <column name="description" value="Кубик 7x7x7"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="3bld"/>
+            <column name="image" value="/img/cubeIcons/3bld.png"/>
+            <column name="description" value="3x3x3 вслепую"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="3fm"/>
+            <column name="image" value="/img/cubeIcons/3fm.png"/>
+            <column name="description" value="3x3x3 на количество ходов"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="3oh"/>
+            <column name="image" value="/img/cubeIcons/3oh.png"/>
+            <column name="description" value="3x3x3 одной рукой"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="clock"/>
+            <column name="image" value="/img/cubeIcons/clock.png"/>
+            <column name="description" value="Clock"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="mega"/>
+            <column name="image" value="/img/cubeIcons/mega.png"/>
+            <column name="description" value="Мегаминкс"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="pyra"/>
+            <column name="image" value="/img/cubeIcons/pyra.png"/>
+            <column name="description" value="Пираминкс"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="skewb"/>
+            <column name="image" value="/img/cubeIcons/skewb.png"/>
+            <column name="description" value="Скьюб"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="square"/>
+            <column name="image" value="/img/cubeIcons/square.png"/>
+            <column name="description" value="Square-1"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="4bld"/>
+            <column name="image" value="/img/cubeIcons/4bld.png"/>
+            <column name="description" value="4x4x4 вслепую"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="5bld"/>
+            <column name="image" value="/img/cubeIcons/5bld.png"/>
+            <column name="description" value="5x5x5 вслепую"/>
+        </insert>
+        <insert tableName="cube">
+            <column name="name"  value="mbld"/>
+            <column name="image" value="/img/cubeIcons/mbld.png"/>
+            <column name="description" value="Мульти-блайнд"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

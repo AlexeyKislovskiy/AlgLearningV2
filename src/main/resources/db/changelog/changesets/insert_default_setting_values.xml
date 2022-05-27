@@ -1,0 +1,124 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001" author="fertdt">
+        <insert tableName="default_setting">
+            <column name="name" value="hideSituationInLearning"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="hideNumberOfAlgorithmsInLearning"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="easyMultiplier"/>
+            <column name="default_value" value="2"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="mediumMultiplier"/>
+            <column name="default_value" value="1.5"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="hardMultiplier"/>
+            <column name="default_value" value="1"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="againMultiplier"/>
+            <column name="default_value" value="0.1"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="resetWhenForgot"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="firstInterval"/>
+            <column name="default_value" value="1"/>
+            <column name="block" value="LEARNING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="hideSituationInTraining"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="TRAINING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="hideNumberOfAlgorithmsInTraining"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="TRAINING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="defaultIncludeNotLearningInTraining"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="TRAINING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="defaultIncludeLearningInTraining"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="TRAINING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="defaultIncludeLearnedInTraining"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="TRAINING"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="defaultSorting"/>
+            <column name="default_value" value="popularity"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="showUsingAlgorithmsFirst"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="interceptionAsMove"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="doubleMoveAs2Moves"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="checkAll"/>
+            <column name="default_value" value="all"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="plusAll"/>
+            <column name="default_value" value="notLearning"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="deleteAll"/>
+            <column name="default_value" value="all"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="showUnverifiedAlgorithms"/>
+            <column name="default_value" value="false"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="useAddedAlgorithm"/>
+            <column name="default_value" value="true"/>
+            <column name="block" value="ALGORITHMS"/>
+        </insert>
+        <insert tableName="default_setting">
+            <column name="name" value="background"/>
+            <column name="default_value" value="/img/background.jpg"/>
+            <column name="block" value="ACCOUNT"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

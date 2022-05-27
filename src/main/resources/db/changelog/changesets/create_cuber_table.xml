@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="uuid_type" value="UUID" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <property name="date_now" value="CURRENT_DATE" dbms="postgresql"/>
+    <property name="date_type" value="DATE" dbms="postgresql"/>
+    <changeSet id="001" author="fertdt">
+        <createTable tableName="cuber">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cuber"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="nickname" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_cuber_nickname"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="uk_cuber_email"/>
+            </column>
+            <column name="hashed_password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registration_date" type="${date_type}" defaultValueComputed="${date_now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visited_days" type="INT" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visited_days_row" type="INT" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_visited" type="${date_type}" defaultValueComputed="${date_now}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="uuid_type" value="UUID" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <changeSet id="001" author="fertdt">
+        <createTable tableName="default_setting">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_default_setting"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_setting_name"/>
+            </column>
+            <column name="default_value" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="block" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="002" author="fertdt">
+        <createTable tableName="custom_setting">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_custom_setting"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="setting_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_custom_setting_to_setting"
+                             referencedTableName="default_setting" referencedColumnNames="id"/>
+            </column>
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_custom_setting_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="custom_value" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE custom_setting
+                ADD CONSTRAINT uk_custom_setting_setting_id_and_cuber_id UNIQUE (setting_id, cuber_id);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

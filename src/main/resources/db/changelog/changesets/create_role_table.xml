@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="uuid_type" value="UUID" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <changeSet id="001" author="fertdt">
+        <createTable tableName="role">
+            <column name="id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role"/>
+            </column>
+            <column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE" defaultValueComputed="NOW()"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_role_name"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="002" author="fertdt">
+        <createTable tableName="cuber_role">
+            <column name="cuber_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_role_to_cuber"
+                             referencedTableName="cuber" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="role_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_cuber_role_to_role"
+                             referencedTableName="role" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <sql>
+            ALTER TABLE cuber_role
+                ADD CONSTRAINT pk_cuber_role PRIMARY KEY (cuber_id, role_id);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
