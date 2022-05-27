@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(cardHeightChange, 100);
+    for (let i = 100; i <= 5000; i += 100) {
+        setTimeout(cardHeightChange, i)
+        setTimeout(bottomRowHeightChange, i)
+    }
     cardHeightChange();
-    setTimeout(bottomRowHeightChange, 100);
     bottomRowHeightChange();
-    sendForm();
 
     window.addEventListener(`resize`, event => cardHeightChange(), false);
     window.addEventListener(`resize`, event => bottomRowHeightChange(), false);
@@ -11,15 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function cardHeightChange() {
         let new_height = document.getElementById('hidden-card').offsetHeight;
         document.getElementById('card-alg').style.height = new_height + 'px';
-    }
-
-    function sendForm() {
-        let el = document.getElementsByClassName('form-sender');
-        for (let i = 0; i < el.length; i++) {
-            el[i].addEventListener('click', evt => {
-                el[i].parentNode.submit();
-            })
-        }
     }
 
     function bottomRowHeightChange() {

@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     setHeight();
-    setTimeout(setHeight, 100);
+    for (let i = 100; i <= 5000; i += 100) {
+        setTimeout(setHeight, i)
+    }
     window.addEventListener(`resize`, event => setHeight(), false);
     changeInputNumber();
     changeInputNumberInt();
