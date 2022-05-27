@@ -24,9 +24,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addConverter(methodNameToMethodResponseConverter);
         registry.addConverter(cubeNameToCubeResponseConverter);
     }
-
-    @Bean
-    OkHttpClient client() {
-        return new OkHttpClient();
-    }
 }

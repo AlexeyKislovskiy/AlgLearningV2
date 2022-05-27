@@ -18,14 +18,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CuberService cuberService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(cuberService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(cuberService).passwordEncoder(passwordEncoder);
     }
 
     @Override
