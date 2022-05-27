@@ -1,6 +1,5 @@
 HELP.md
 target/
-.mvn
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -9,5 +8,3 @@ target/
 *.iws
 *.iml
 *.ipr
-mvnw
-mvnw.cmd
